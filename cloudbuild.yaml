@@ -7,7 +7,7 @@ steps:
   - https://github.com/moondial-pal/cloud_resume_fe
 # Build and tag the image.
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/cloud_resume_fe/version1', './moondial-pal/cloud_resume_fe']
+  args: ['build', '-t', 'gcr.io/cloud_resume_fe/version1', './cloud_resume_fe']
 
 # Publish the image to Container Registry.
 images: ['gcr.io/cloud_resume_fe/version1']
