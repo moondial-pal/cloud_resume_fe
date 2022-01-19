@@ -1,8 +1,14 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', '${_IMAGE}', '.']
+- name: 'gcr.io/cloud-builders/git'
+  args:
+  - clone
+  - '--depth'
+  - '1'
+  - https://github.com/moondial-pal/cloud_resume_fe
+# Build and tag the image.
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/cloud_resume_fe/version1', './moondial-pal/cloud_resume_fe']
 
-images: ['${_IMAGE}']
+# Publish the image to Container Registry.
+images: ['gcr.io/cloud_resume_fe/version1']
 
-substitutions:
-  _IMAGE: 'gcr.io/${PROJECT_ID}/${REPO_NAME}:${TAG_NAME:-${SHORT_SHA}}'
