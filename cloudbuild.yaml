@@ -1,7 +1,4 @@
 steps:
 - name: 'gcr.io/cloud-builders/git'
-  args: ['push', 'https://source.developers.google.com/p/$PROJECT_ID/r/$REPO', 'master']
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-  entrypoint: 'git'
   args: ['push', 'https://github.com/moondial-pal/cloud_resume_fe.git', 'master']
 
