@@ -1,4 +1,9 @@
 steps:
-- name: 'gcr.io/cloud-builders/git'
-  args: ['push', 'https://github.com/moondial-pal/cloud_resume_fe.git', 'master']
-
+# Build all supported versions.
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--tag=gcr.io/$PROJECT_ID/docker:19.03.9'
+  - '--file=Dockerfile-19.03.9'
+  - '.'
+  id: '19.03.9'
