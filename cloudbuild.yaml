@@ -1,8 +1,5 @@
 steps:
 # Build all supported versions.
 - name: 'gcr.io/cloud-builders/docker'
-- args: [ 'build', '-t', 'gcr.io/lap-cloud-resume/my_resume' ]
-  - '--tag=gcr.io/lap-cloud-resume/docker:19.03.9'
-  - '--file=Dockerfile-19.03.9'
-  - '.'
+- args: [ 'build', '-t', 'gcr.io/lap-cloud-resume/my_resume', '.' ]
   id: '19.03.9'
