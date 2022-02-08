@@ -1,4 +1,0 @@
-steps:
-# Build all supported versions.
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/lap-cloud-resume/my_resume', '.' ]
