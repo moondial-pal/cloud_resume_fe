@@ -1,0 +1,25 @@
+name: Update GCS Bucket
+
+on:
+  push:
+    branches:
+      - main # Change this to your main branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Authenticate with Google Cloud
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/gcp-key.json
+      run: |
+        echo ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }} | base64 --decode > ${{ github.workspace }}/gcp-key.json
+        gcloud auth activate-service-account --key-file=${{ github.workspace }}/gcp-key.json
+
+    - name: Copy files to GCS bucket
+      run: |
+        gsutil -m cp -r path/to/local/files/* gs://your-bucket-name/
